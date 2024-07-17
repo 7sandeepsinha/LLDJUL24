@@ -1,10 +1,21 @@
 package lldmodule1.oops2_accessModifiers_constructors;
 
+import lldmodule1.oops3_inheritance_polymorphism.A;
+
 public class Student {
      public int rollNo;
      public String name;
      public int rank;
      public Address address;
+
+     public Student(Student student){
+         rollNo = student.rollNo;
+         name = student.name;
+         rank = student.rank;
+         Address newAddress = new Address(student.address.street, student.address.city);
+         address = newAddress;
+         // address = new Address(student.address.street, student.address.city);
+     }
 
      public Student(){
      }
