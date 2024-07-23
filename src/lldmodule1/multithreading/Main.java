@@ -26,6 +26,8 @@ public class Main {
         MRPCalculator mrpCalculator = new MRPCalculator(10);
         DiscountCalculator discountCalculator = new DiscountCalculator(10);
         ExecutorService executor = Executors.newFixedThreadPool(2);
+
+
         Future<Integer> futureMrp = executor.submit(mrpCalculator);
         Future<Double> futureDiscount = executor.submit(discountCalculator);
 

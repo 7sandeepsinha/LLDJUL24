@@ -17,10 +17,10 @@ public class Main {
 
         // Car - 2
 //         ElectricCar - 3 [1 own, 1 overridden, 1 inherited]
-        ElectricCar car = (ElectricCar) new Car(); // explicit casting || downcasting
+     /*   ElectricCar car = (ElectricCar) new Car(); // explicit casting || downcasting
         car.startAC();
         car.startEngine();
-        car.chargeBattery();
+        car.chargeBattery();*/
 
         Accountant accountant = new Accountant();
         //accountant.id = 10;
