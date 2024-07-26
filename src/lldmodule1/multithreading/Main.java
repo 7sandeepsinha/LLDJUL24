@@ -1,8 +1,7 @@
 package lldmodule1.multithreading;
 
-import java.lang.reflect.Executable;
-import java.time.LocalDateTime;
-import java.util.concurrent.*;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
     public static void main(String[] args) throws ExecutionException, InterruptedException {
@@ -21,7 +20,7 @@ public class Main {
             NumberPrinter np = new NumberPrinter(i);
             executor.execute(np);
         }
-        */
+
 
         MRPCalculator mrpCalculator = new MRPCalculator(10);
         DiscountCalculator discountCalculator = new DiscountCalculator(10);
@@ -45,5 +44,23 @@ public class Main {
 
         double finalPrice = mrp - (mrp * discount/100);
         System.out.println("Final price : " + finalPrice + ", from thread : " + Thread.currentThread().getName());
+
+         */
+        Count c = new Count(0);
+        ReentrantLock mutex = new ReentrantLock();
+
+        Adder adder = new Adder(c, mutex);
+        Subtractor subtractor = new Subtractor(c, mutex);
+
+        Thread adderThread = new Thread(adder);
+        Thread subtractorThread = new Thread(subtractor);
+
+        adderThread.start();
+        subtractorThread.start();
+
+        adderThread.join();
+        subtractorThread.join();
+
+        System.out.println(c.getValue());
     }
 }
