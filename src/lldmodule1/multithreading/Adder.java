@@ -15,13 +15,14 @@ public class Adder implements Runnable{
     @Override
     public void run() {
 
-        mutex.lock();
+        synchronized (count) {
 
-        for (int i = 1; i <= 1000; i++) {
+            for (int i = 1; i <= 1000; i++) {
 
-            count.setValue(count.getValue() + 1);
+                count.setValue(count.getValue() + 1);
+            }
         }
-        mutex.unlock();
+
 
     }
 

@@ -12,6 +12,7 @@ public class Count {
     }
 
     public void setValue(int value) {
+
         this.value = value;
     }
 }

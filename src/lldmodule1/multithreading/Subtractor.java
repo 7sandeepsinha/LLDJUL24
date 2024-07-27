@@ -13,13 +13,14 @@ public class Subtractor implements Runnable{
     }
 
     @Override
-    public void run() {
-        mutex.lock();
-        for(int i=1;i<=1000;i++){
-             // class based lock, will have lesser inconsistency
+    public  void run() {
+        synchronized (count) {
+            for (int i = 1; i <= 1000; i++) {
+                // class based lock, will have lesser inconsistency
                 count.setValue(count.getValue() - 1);
 
+            }
+
         }
-        mutex.unlock();
     }
 }
