@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
 
 public class Main {
     public static void main(String[] args) {
-        Queue<Shirt> store = new ConcurrentLinkedDeque<>();
+        Queue<Shirt> store = new LinkedList<>();
 
         // beginning, store is empty
         Semaphore semaProducer = new Semaphore(2); // producer allowed to add 5 shirts as store is empty

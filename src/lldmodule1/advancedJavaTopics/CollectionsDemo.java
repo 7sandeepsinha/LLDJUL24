@@ -4,7 +4,9 @@ import java.util.*;
 
 public class CollectionsDemo {
     public static void main(String[] args) {
+        Collection collection;
         ArrayList<Integer> list = new ArrayList<>(); // we can pass an initial capacity but no load factor
+
         list.add(0,2);
         list.add(3);
         list.add(4);
@@ -60,6 +62,7 @@ public class CollectionsDemo {
             int key = entry.getKey();
             String value = entry.getValue();
             System.out.println("Key : " + key + " Value : " + value );
+
         }
     }
 }
