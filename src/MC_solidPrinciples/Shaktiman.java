@@ -1,4 +1,4 @@
-package solidPrinciples;
+package MC_solidPrinciples;
 
 public class Shaktiman extends Animal implements IFlyable{
     @Override

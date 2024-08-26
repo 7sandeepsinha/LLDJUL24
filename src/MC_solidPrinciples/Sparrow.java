@@ -1,4 +1,4 @@
-package solidPrinciples;
+package MC_solidPrinciples;
 
 public class Sparrow extends Animal implements IFlyable, ISpreadWings {
     @Override
