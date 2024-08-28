@@ -1,4 +1,4 @@
-package solidPrinciples;
+package MC_solidPrinciples;
 
 public class Ostrich extends Animal implements ISpreadWings{
     @Override

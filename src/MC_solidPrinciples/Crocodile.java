@@ -1,4 +1,4 @@
-package solidPrinciples;
+package MC_solidPrinciples;
 
 public class Crocodile extends Animal{
     public void run(){

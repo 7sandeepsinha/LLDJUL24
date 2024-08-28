@@ -1,4 +1,4 @@
-package solidPrinciples;
+package MC_solidPrinciples;
 
 public abstract class Animal {
     private String name;

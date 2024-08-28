@@ -1,4 +1,4 @@
-package solidPrinciples;
+package MC_solidPrinciples;
 
 public class Razorpay implements PaymentGateway {
 
