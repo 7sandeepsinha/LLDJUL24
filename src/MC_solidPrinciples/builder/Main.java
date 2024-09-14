@@ -29,6 +29,9 @@ public class Main {
 // Cant create empty Student object
 // Since we dont have any setters the Student object becomes immutable
 
+// Validation passes -> Builder object[eligible for GC immediately] and Student object
+// Validation fails -> Builder object[eligible for GC immediately]
+
 
 /*
     Inner classes -> Class inside a class
