@@ -1,0 +1,8 @@
+Controller -> point of contact
+Service -> business logic
+Repository -> talks to storage
+Models -> representing all models/entities
+
+
+Controller -> Service -> Repository
+
