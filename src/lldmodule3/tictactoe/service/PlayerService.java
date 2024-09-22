@@ -9,7 +9,7 @@ import java.util.HashSet;
 public class PlayerService {
 
     private static int counter = 1;
-    private HashSet<Character> symbolSet;
+    private final HashSet<Character> symbolSet;
 
     public PlayerService() {
         this.symbolSet = new HashSet<>();

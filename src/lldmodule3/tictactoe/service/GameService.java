@@ -10,11 +10,10 @@ import java.util.List;
 public class GameService {
 
     public Game createGame(int size, List<Player> players){
-        Game newGame = Game.builder()
+        return Game.builder()
                 .size(size)
                 .players(players)
                 .build();
-        return newGame;
     }
 
     public Game startGame(Game game){
