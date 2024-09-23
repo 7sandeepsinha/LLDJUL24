@@ -1,5 +1,7 @@
 package lldmodule3.tictactoe.models;
 
+import lldmodule1.oops3_inheritance_polymorphism.C;
+
 public class Cell {
     private int row;
     private int col;
@@ -42,5 +44,12 @@ public class Cell {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public Cell clone(){
+        Cell cell = new Cell(this.row, this.col);
+        cell.player = this.player;
+        cell.cellState = this.cellState;
+        return cell;
     }
 }
