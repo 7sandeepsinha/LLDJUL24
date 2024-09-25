@@ -2,6 +2,7 @@ package lldmodule3.tictactoe.controller;
 
 import lldmodule1.oops3_inheritance_polymorphism.B;
 import lldmodule3.tictactoe.exception.InvalidCellChosenException;
+import lldmodule3.tictactoe.exception.InvalidUndoCommandException;
 import lldmodule3.tictactoe.models.*;
 import lldmodule3.tictactoe.service.*;
 
@@ -52,19 +53,28 @@ public class GameController {
             int col = sc.nextInt();
             // TODO : validate the row and col range within board
             try {
-                Move move = gameService.executeMove(player, game, row, col);
-                return move;
+                return gameService.executeMove(player, game, row, col);
             } catch (InvalidCellChosenException ex) {
                 // TODO: handle new entry logic
             }
         } else {
-            Move move = RandomBotPlayingStrategy.makeMove(player, game);
-            return move;
+            return RandomBotPlayingStrategy.makeMove(player, game);
         }
         return null;
     }
 
     public Player checkWinner(Board board, Move move, CheckWinnerUtil checkWinnerUtil) {
         return checkWinnerUtil.checkWinner(board, move);
+    }
+
+    public Game undoGame(int moves, Game game){
+        if(moves > game.getMoves().size()){
+            throw new InvalidUndoCommandException("Number of undo steps is invalid");
+        }
+        return gameService.undoMove(moves, game);
+    }
+
+    public void replay(Game game){
+        gameService.replay(game);
     }
 }

@@ -2,10 +2,7 @@ package lldmodule3.tictactoe;
 
 import lldmodule3.tictactoe.controller.GameController;
 import lldmodule3.tictactoe.exception.GameDrawnException;
-import lldmodule3.tictactoe.models.Game;
-import lldmodule3.tictactoe.models.GameState;
-import lldmodule3.tictactoe.models.Move;
-import lldmodule3.tictactoe.models.Player;
+import lldmodule3.tictactoe.models.*;
 import lldmodule3.tictactoe.service.BoardService;
 import lldmodule3.tictactoe.service.GameService;
 import lldmodule3.tictactoe.service.PlayerService;
@@ -16,8 +13,8 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         PlayerService playerService = new PlayerService();
-        GameService gameService = new GameService();
         BoardService boardService = new BoardService();
+        GameService gameService = new GameService(boardService);
 
         GameController gameController = new GameController(playerService, gameService);
 
@@ -33,6 +30,15 @@ public class Main {
                 int nextPlayerIndex = game.getNextMovePlayerIndex();
                 Player currentPlayer = game.getPlayers().get(nextPlayerIndex);
                 System.out.println("Player to make a move : " + currentPlayer.getName());
+                if(!currentPlayer.getPlayerType().equals(PlayerType.BOT)) {
+                    System.out.println("Do you want to undo to a certain step ? 1 for yes, 0 for No");
+                    int undo = sc.nextInt();
+                    if (undo == 1) {
+                        System.out.println("Please enter the number of moves you want to go back");
+                        int undoCount = sc.nextInt();
+                        game = gameController.undoGame(undoCount, game);
+                    }
+                }
                 Move move = gameController.createMove(currentPlayer, game);
                 boardService.printBoard(game.getBoard());
                 try {
@@ -41,6 +47,11 @@ public class Main {
                         System.out.println("WINNER : " + winner.getName());
                         game.setGameState(GameState.WINNER_DONE);
                         boardService.printBoard(game.getBoard());
+                        System.out.println("Do you want a replay? 1 for Yes, 0 for No");
+                        int replay = sc.nextInt();
+                        if(replay == 1){
+                            gameController.replay(game);
+                        }
                         break;
                     }
                 }catch (GameDrawnException ex){
