@@ -42,4 +42,14 @@ public class Board {
     public void setSize(int size) {
         this.size = size;
     }
+
+    public Board clone(){
+        Board board = new Board(this.size);
+        for(int i=0;i<size;i++){
+            for(int j=0;j<size;j++){
+                board.cells.get(i).set(j, this.cells.get(i).get(j).clone());
+            }
+        }
+        return board;
+    }
 }

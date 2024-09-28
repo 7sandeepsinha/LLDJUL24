@@ -13,7 +13,7 @@ public class BoardService {
             List<Cell> row = cells.get(i);
             for(Cell cell : row){
                 if(cell.getPlayer() == null){
-                    System.out.print("|X| ");
+                    System.out.print("| | ");
                 } else {
                     System.out.print("|" + cell.getPlayer().getSymbol() + "| ");
                 }
