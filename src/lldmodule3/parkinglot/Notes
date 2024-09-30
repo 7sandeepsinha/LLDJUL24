@@ -1,0 +1,28 @@
+Owner
+id  name  phone
+
+Vehicle
+id number type ownerId[id of Owner table]
+
+
+Owner -> 1
+find all vehicles with id = 1
+
+
+Owner{
+int id;
+String name;
+String phone;
+List<Vehicle> vehicles || 1 -> @1234, 10 -> @3456
+}
+
+Vehicle{
+int id;
+String number;
+String type;
+}
+
+// List<Vehicle> allVehicles
+//
+
+
